@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaxiDispo, tout est en stock · Ouverture prochaine</title>
+<meta name="description" content="MaxiDispo, boutique en ligne qui vend uniquement ce qui est sur ses étagères : électroménager, high-tech, maison, bricolage, jardin et bien plus. Ouverture prochaine.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root {
+    --paper: #F2F6FB; --surface: #FFFFFF; --ink: #0B1F3A; --ink-2: #4A5B73; --line: #D3DEEB;
+    --brand: #0050C8; --accent: #0A9AEC; --tint: #E6F2FD;
+    --night: #0B1A3A; --night-2: #12285A; --night-ink: #EEF3FF; --night-ink-2: #B6C6EA; --sky: #5CC2FF;
+    --radius: 12px;
+    --body: "Atkinson Hyperlegible Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --display: "Archivo", "Arial Narrow", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: var(--body); font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--paper); }
+  a { color: var(--brand); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { width: min(1080px, 100% - 40px); margin-inline: auto; }
+  h1, h2, h3 { font-family: var(--display); line-height: 1.15; margin: 0; text-wrap: balance; }
+
+  /* Bandeau d'accueil, bleu nuit comme la boutique */
+  .hero { background: radial-gradient(1200px 500px at 85% -10%, #1B3F86 0%, transparent 60%), var(--night); color: var(--night-ink); }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0; }
+  .top img { display: block; height: 48px; width: auto; }
+  .badge { font-size: 14px; font-weight: 700; letter-spacing: .02em; color: var(--night); background: var(--sky); padding: 6px 12px; border-radius: 999px; white-space: nowrap; }
+  .hero-body { padding: 56px 0 72px; max-width: 760px; }
+  .hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 800; letter-spacing: -.01em; }
+  .hero h1 span { color: var(--sky); }
+  .hero p { font-size: clamp(18px, 2.2vw, 21px); color: var(--night-ink-2); margin: 20px 0 0; }
+
+  /* Engagements */
+  .pledges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: -36px; }
+  .pledge { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: 0 1px 2px rgba(11,31,58,.06), 0 8px 24px rgba(11,31,58,.08); }
+  .pledge strong { display: block; font-family: var(--display); font-size: 18px; margin-bottom: 4px; }
+  .pledge span { color: var(--ink-2); font-size: 15px; }
+
+  section { padding: 64px 0 0; }
+  .lead { color: var(--ink-2); margin: 10px 0 0; max-width: 680px; }
+  h2 { font-size: clamp(26px, 3.4vw, 34px); font-weight: 800; }
+
+  /* Univers */
+  .cats { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .cats li { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; font-weight: 700; }
+
+  /* Comment ça marche */
+  .steps { counter-reset: s; list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .steps li { counter-increment: s; background: var(--tint); border-radius: var(--radius); padding: 22px; }
+  .steps li::before { content: counter(s); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 800; margin-bottom: 12px; }
+  .steps strong { display: block; font-family: var(--display); font-size: 19px; margin-bottom: 4px; }
+  .steps span { color: var(--ink-2); }
+
+  /* Contact */
+  .contact { margin: 64px 0 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: center; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+  .contact dt { color: var(--ink-2); }
+  .contact dd { margin: 0; font-weight: 700; }
+
+  footer { margin-top: 72px; background: var(--night); color: var(--night-ink-2); font-size: 15px; padding: 32px 0; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: center; }
+  footer a { color: var(--night-ink); }
+
+  @media (max-width: 860px) {
+    .pledges, .cats { grid-template-columns: repeat(2, 1fr); }
+    .steps, .contact { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 420px) {
+    .pledges, .cats { grid-template-columns: 1fr; }
+    .badge { display: none; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap top">
+    <img src="logo-header-on-dark.png" width="238" height="88" alt="MaxiDispo">
+    <span class="badge">Ouverture prochaine</span>
+  </div>
+  <div class="wrap hero-body">
+    <h1>Tout est en stock, <span>vraiment.</span></h1>
+    <p>MaxiDispo est une boutique en ligne qui vend uniquement ce qui est sur ses propres étagères. Ce qui est affiché disponible est chez nous, prêt à partir de notre entrepôt. Notre boutique ouvre très bientôt.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="pledges" role="list">
+      <div class="pledge" role="listitem"><strong>Stock réel</strong><span>Chaque disponibilité vient directement de notre entrepôt.</span></div>
+      <div class="pledge" role="listitem"><strong>Expédié par nous</strong><span>Préparé et emballé dans notre propre entrepôt.</span></div>
+      <div class="pledge" role="listitem"><strong>14 jours</strong><span>pour changer d’avis après réception.</span></div>
+      <div class="pledge" role="listitem"><strong>Paiement sécurisé</strong><span>Carte bancaire avec 3-D Secure. Aucune donnée de carte sur nos serveurs.</span></div>
+    </div>
+
+    <section aria-labelledby="univers">
+      <h2 id="univers">Nos univers</h2>
+      <p class="lead">Des produits neufs et d’occasion pour toute la maison, choisis et stockés par nos soins.</p>
+      <ul class="cats">
+        <li>Électroménager</li><li>High-Tech</li><li>Maison</li><li>Bricolage</li>
+        <li>Jardin</li><li>Sport et mobilité</li><li>Bébé et jouets</li><li>Animalerie</li>
+        <li>Auto et moto</li><li>Beauté et santé</li><li>Bureau et papeterie</li><li>Entretien et climatisation</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="comment">
+      <h2 id="comment">Comment ça marche</h2>
+      <ol class="steps">
+        <li><strong>Vous choisissez</strong><span>Vous ne voyez que des articles réellement disponibles chez nous.</span></li>
+        <li><strong>Nous réservons</strong><span>Au moment du paiement, votre article est mis de côté pour vous.</span></li>
+        <li><strong>Nous expédions</strong><span>Livraison en point relais, à domicile ou retrait gratuit à l’entrepôt.</span></li>
+      </ol>
+    </section>
+
+    <div class="contact" aria-labelledby="contact-titre">
+      <div>
+        <h2 id="contact-titre">Une question ?</h2>
+        <p class="lead">Écrivez-nous, nous vous répondrons avec plaisir, même avant l’ouverture.</p>
+      </div>
+      <dl>
+        <dt>E-mail</dt><dd><a href="mailto:iliass@maxidispo.com">iliass@maxidispo.com</a></dd>
+        <dt>Société</dt><dd>MaxiDispo SAS</dd>
+        <dt>Adresse</dt><dd>47 rue Vivienne, 75002 Paris</dd>
+      </dl>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 MaxiDispo SAS · RCS Paris 132 990 961</span>
+    <a href="mentions-legales.html">Mentions légales</a>
+  </div>
+</footer>
+</body>
+</html>
